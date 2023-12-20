@@ -55,7 +55,7 @@ public class KkTest {
         List<KkEntity> readTest = repository.findByUserName(user.getUserName());
 
         for (KkEntity 이름 : readTest){
-            log.info(이름);
+            log.info(이름);//이름
         }
 
 
