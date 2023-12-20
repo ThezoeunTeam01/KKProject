@@ -8,9 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Optional;
 
 @Log4j2
 @SpringBootTest
@@ -54,8 +53,8 @@ public class KkTest {
 
         List<KkEntity> readTest = repository.findByUserName(user.getUserName());
 
-        for (KkEntity 이름 : readTest){
-            log.info(이름);//이름
+        for (KkEntity forname : readTest){
+            log.info(forname);//이름
         }
 
 
