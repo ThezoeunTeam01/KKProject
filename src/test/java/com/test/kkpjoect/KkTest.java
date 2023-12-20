@@ -43,7 +43,7 @@ public class KkTest {
         //Create(seve)
         KkEntity user = new KkEntity();
         user.setUserName("좀 제발 되라고");
-        user.setPassWord("1234");
+        user.setPassWord("123422");
         KkEntity user2 = new KkEntity();
         user2.setUserName("좀 제발 되라고");
         user2.setPassWord("1234222222");
