@@ -4,13 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Entity  // JPA 엔터티 클래스임을 나타내는 어노테이션
 @Data  // 롬복 어노테이션으로, @Getter, @Setter, @EqualsAndHashCode, @ToString, @RequiredArgsConstructor 등을 한꺼번에 생성해주는 어노테이션
 @AllArgsConstructor  // 롬복 어노테이션으로, 모든 필드를 파라미터로 받는 생성자를 자동으로 생성해주는 어노테이션
 @NoArgsConstructor  // 롬복 어노테이션으로, 파라미터가 없는 기본 생성자를 자동으로 생성해주는 어노테이션
-@Table(name = "testUserTable")  // 데이터베이스 테이블과 매핑됨을 나타내는 어노테이션
+@Table  // 데이터베이스 테이블과 매핑됨을 나타내는 어노테이션
 public class KkEntity {
 
     @Id  // 엔터티의 기본 키(primary key)를 나타내는 어노테이션
