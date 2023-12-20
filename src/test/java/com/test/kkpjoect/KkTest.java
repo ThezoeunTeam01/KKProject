@@ -46,7 +46,7 @@ public class KkTest {
         user.setPassWord("123422");
         KkEntity user2 = new KkEntity();
         user2.setUserName("좀 제발 되라고");
-        user2.setPassWord("12342222223232");
+        user2.setPassWord("1234222222223232");
 
         repository.save(user);
         repository.save(user2);
