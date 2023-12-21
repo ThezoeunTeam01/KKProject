@@ -2,7 +2,7 @@ package com.test.kkpjoect;
 
 import com.test.kkpjoect.model.KkEntity;
 import com.test.kkpjoect.persistence.KkRepository;
-import jakarta.transaction.Transactional;
+//import jakarta.transaction.Transactional;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +10,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Log4j2
 @SpringBootTest
-@Transactional //트랙잭션은 전체 성공 아니면 적용이 안됨
+//@Transactional //트랙잭션은 전체 성공 아니면 적용이 안됨
 public class KkTest {
 
     @Autowired
@@ -68,6 +69,7 @@ public class KkTest {
 
         // 사용자 이름으로 사용자 조회
         List<KkEntity> userList = repository.findByUserName(user.getUserName());
+        // List<KkEntity> userList = repository.findByPassWord("123422");
         log.info("업데이트 전 사용자 정보: " + userList);
 
         if (!userList.isEmpty()) {
@@ -75,9 +77,9 @@ public class KkTest {
             KkEntity foundUser = userList.get(0);
             foundUser.setUserName("업데이트 후");
 
-            // 업데이트된 사용자 엔터티 저장
-            //repository.save(foundUser);
-            log.info("레포지토리 값 : "+repository.save(foundUser));
+            // 업데이트된 사용자 엔터티 저장 - 없어도 저장은 됨
+            repository.save(foundUser);
+
             // Optional: 업데이트된 사용자를 검증하기 위해 검색하고 로그에 기록
             KkEntity updatedUser = repository.findById(foundUser.getUserId()).orElse(null);
             log.info("업데이트된 사용자 정보: " + updatedUser);
@@ -86,8 +88,18 @@ public class KkTest {
             log.error("해당 사용자를 찾을 수 없습니다.");
         }
     }
+    @Test
+    public void testDelete() {
+        Optional<KkEntity> optionalKkEntity = repository.findByUserId(6);
 
-
+        if (optionalKkEntity.isPresent()) {
+            KkEntity killer = optionalKkEntity.get();
+            repository.delete(killer);
+            log.info("삭제된 유저 정보: " + killer);
+        } else {
+            log.info("해당 유저를 찾을 수 없습니다.");
+        }
+    }
 
 
 

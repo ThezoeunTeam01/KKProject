@@ -14,7 +14,7 @@ public class KkEntity {
 
     @Id  // 엔터티의 기본 키(primary key)를 나타내는 어노테이션
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // 자동으로 값이 증가하는 전략을 사용하는 경우를 지정하는 어노테이션
-    private long userId;
+    private int userId;
 
     private String userName;  // 사용자 이름을 저장하는 필드
 

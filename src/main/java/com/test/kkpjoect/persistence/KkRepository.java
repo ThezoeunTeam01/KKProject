@@ -8,12 +8,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface KkRepository extends JpaRepository<KkEntity, Long> {
+public interface KkRepository extends JpaRepository<KkEntity, Integer> {
 
     // userName을 기준으로 사용자를 조회하는 메소드
     List<KkEntity> findByUserName(String userName);
-    Optional<KkEntity> findByUserId(Long userId);
 
-    Optional<KkEntity> findByPassWord(String password);
+    Optional<KkEntity> findByUserId(int userId);
+
+    List<KkEntity> findByPassWord(String password);
+
+
 
 }
