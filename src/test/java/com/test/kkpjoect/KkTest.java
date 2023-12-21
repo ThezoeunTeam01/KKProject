@@ -26,7 +26,7 @@ public class KkTest {
         user.setPassWord("1234");
 
         KkEntity user2 = new KkEntity();
-        user2.setUserName("testuser02");
+        user2.setUserName("testuser0222");
         user2.setPassWord("1234");
 
         log.info("유저1 값 : "+user);
