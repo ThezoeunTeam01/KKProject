@@ -61,6 +61,18 @@ public class KkTest {
     }
     @Test
     public void testUpdate() {
+//        //변경할 행을 선택
+//        Optional<KkEntity> seleteUsers = repository.findByUserId(9);
+//        KkEntity seleteUser  = seleteUsers.get();
+//        log.info("셀렉트 유저 : "+seleteUser);
+//        //선택된 요소를 변경
+//        seleteUser.setUserName("업데이트 진행 완료");
+//        //변경된 요소를 저장
+//        repository.save(seleteUser);
+//        //변경된 요소 확인
+//        Optional<KkEntity> testUpdate = repository.findByUserId(9);
+//        log.info("업데이트 완료된 요소 확인"+testUpdate);
+
         // 사용자 생성 및 저장
         KkEntity user = new KkEntity();
         user.setUserName("업데이트 전");
@@ -90,12 +102,16 @@ public class KkTest {
     }
     @Test
     public void testDelete() {
+        // 삭제할 요소 확인
         Optional<KkEntity> optionalKkEntity = repository.findByUserId(6);
-
+        //요소 검증에 따른 실행
         if (optionalKkEntity.isPresent()) {
+            //삭제할 요소 선택
             KkEntity killer = optionalKkEntity.get();
-            repository.delete(killer);
+            //삭제할 요소 로그 확인
             log.info("삭제된 유저 정보: " + killer);
+            //테이블에서 삭제 진행
+            repository.delete(killer);
         } else {
             log.info("해당 유저를 찾을 수 없습니다.");
         }
