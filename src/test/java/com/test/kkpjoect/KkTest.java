@@ -171,7 +171,15 @@ public class KkTest {
         KkEntity updateUser =  service.userUpdate(user);
 
         log.info("아 스트링 : "+updateUser);
+    }
 
+    @Test
+    public void testServiceKillng(){
+        KkDTO user = KkDTO.builder()
+                .userId(9)
+                .build();
+        List<KkEntity> allUsers = service.userDelete(user);
+        log.info("남은 유저 확인 : "+allUsers);
 
     }
 

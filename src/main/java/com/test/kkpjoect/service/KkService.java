@@ -60,4 +60,13 @@ public class KkService {
         return updatedUser;
     }
 
+    public List<KkEntity> userDelete(KkDTO dto){
+        Optional<KkEntity> deleteUsers  = repository.findByUserId(dto.getUserId());
+        KkEntity deleteUser = deleteUsers.get();
+        repository.delete(deleteUser);
+
+        List<KkEntity> users = repository.findAllBy();
+        return users;
+    }
+
 }

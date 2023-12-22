@@ -17,6 +17,8 @@ public interface KkRepository extends JpaRepository<KkEntity, Integer> {
 
     List<KkEntity> findByPassWord(String password);
 
+    List<KkEntity> findAllBy();
+
 
 
 }
