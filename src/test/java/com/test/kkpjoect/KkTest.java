@@ -1,8 +1,10 @@
 package com.test.kkpjoect;
 
+import com.test.kkpjoect.dto.KkDTO;
 import com.test.kkpjoect.model.KkEntity;
 import com.test.kkpjoect.persistence.KkRepository;
 //import jakarta.transaction.Transactional;
+import com.test.kkpjoect.service.KkService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class KkTest {
 
     @Autowired
     private KkRepository repository;
+
+    @Autowired
+    private KkService service;
     @Test
     public void  testCreate(){
         //Create(seve)
@@ -116,6 +121,32 @@ public class KkTest {
             log.info("해당 유저를 찾을 수 없습니다.");
         }
     }
+
+
+
+    ////////서비스 테스트
+
+    @Test
+    public void testServiceCreate(){
+        log.info("테스트 크리에이트 시작");
+
+        KkDTO user =  KkDTO.builder()
+                .userName("테스트 시작")
+                .passWord("테스트 패스워드")
+                .build();
+        log.info("DTO에 테스트 유저 생성 : "+user);
+        log.info("서비스 살행 전");
+        KkDTO returnUser = service.userCreate(user);
+        log.info("서비스에서 리턴 받은 DTO 값 확인"+returnUser);
+        log.info("테스트 크리에이트 종료");
+
+
+
+    }
+
+
+
+
 
 
 
