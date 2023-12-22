@@ -134,16 +134,46 @@ public class KkTest {
                 .userName("테스트 시작")
                 .passWord("테스트 패스워드")
                 .build();
+
         log.info("DTO에 테스트 유저 생성 : "+user);
         log.info("서비스 살행 전");
         KkDTO returnUser = service.userCreate(user);
         log.info("서비스에서 리턴 받은 DTO 값 확인"+returnUser);
+        log.info("내가 만든 DTO값 확인"+user);
         log.info("테스트 크리에이트 종료");
 
+        if(user.getUserName() == returnUser.getUserName()){
+            log.info("생성한 유저와 저장된 유저가 같습니다.");
+        }else {
+            log.info("생성한 유저와 저장된 유저가 다릅니다.");
+
+        }
+
+    }
+    @Test
+    public void testServiceRead(){
+        // 폼 혹은 앞에서 받아온 값
+        KkDTO readUser = KkDTO.builder()
+                .passWord("테스트 패스워드")
+                .build();
+        //서비스 안에 메서드를 실행(DTO 값을 담아서 넘김) or 리턴 값을 받기위한 객체 생성
+        List<KkEntity> readTable = service.userRead(readUser);
+        //반환된 값 확인
+        log.info("검색한 결과 값 : "+readTable);
+    }
+    @Test
+    public void testServiceUpdate(){
+
+        KkDTO user =KkDTO.builder()
+                .userId(1)
+                .build();
+
+        KkEntity updateUser =  service.userUpdate(user);
+
+        log.info("아 스트링 : "+updateUser);
 
 
     }
-
 
 
 

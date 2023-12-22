@@ -21,6 +21,12 @@ public class KkDTO {
         this.passWord = entity.getPassWord();
     }
 
+    public KkDTO(final KkDTO dto){
+        this.userId = dto.getUserId();
+        this.userName = dto.getUserName();
+        this.passWord = dto.getPassWord();
+    }
+
     public static KkEntity toEntity(final KkDTO dto){
         return KkEntity.builder()
                 .userName(dto.getUserName())
