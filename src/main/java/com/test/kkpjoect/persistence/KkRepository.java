@@ -19,6 +19,6 @@ public interface KkRepository extends JpaRepository<KkEntity, Integer> {
 
     List<KkEntity> findAllBy();
 
-
+    Optional<KkEntity> findByUserNameAndPassWord(String userName,String passWord);
 
 }

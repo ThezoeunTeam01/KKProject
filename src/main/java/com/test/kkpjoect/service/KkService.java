@@ -20,7 +20,7 @@ public class KkService {
     public KkDTO userCreate(KkDTO dto){
         log.info("서비스 크리에이트 시작");
         KkDTO newDTO = new KkDTO(dto);
-        newDTO.setUserName(newDTO.getUserName()+"_forKakao");
+        newDTO.setUserName(newDTO.getUserName());
         //받은 DTO 값을 엔티티에 저장(ex/ setUserName(dto.getUserName 같은것들)
         KkEntity user = KkDTO.toEntity(newDTO);
         log.info("받은 DTO를 엔티티에 저장한 값 "+ user);
@@ -67,6 +67,21 @@ public class KkService {
 
         List<KkEntity> users = repository.findAllBy();
         return users;
+    }
+
+    public boolean userLogin(KkDTO dto){
+        Optional<KkEntity> searchUser = repository.findByUserNameAndPassWord(dto.getUserName(), dto.getPassWord());
+        log.info("로그인하려는 계정 : "+searchUser);
+
+        KkEntity user = searchUser.get();
+        dto.setUserId(user.getUserId());
+        if (searchUser.isPresent()) {
+            // 로그인 성공
+            return true;
+        } else {
+            // 로그인 실패
+            return false;
+        }
     }
 
 }
