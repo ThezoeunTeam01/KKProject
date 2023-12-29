@@ -36,7 +36,7 @@ const TMDBList = () => {
                     <li key={movie.id}>
                         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
                         <p>{movie.title}</p>
-                        <button>버튼임</button>
+                        <button>일단아무거나</button>
                     </li>
                 ))}
             </ul>
