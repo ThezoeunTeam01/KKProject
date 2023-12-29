@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const TMDBList = () => {
-    const [searchQuery, setSearchQuery] = useState('Avengers');
+    const [searchQuery, setSearchQuery] = useState('');
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
