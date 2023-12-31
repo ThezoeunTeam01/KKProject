@@ -18,6 +18,7 @@ public class LikeService {
     private final LikeRepository repository;
 
     public void LikeCreate(LikeDTO dto){
+
         LikeEntity list = LikeDTO.toEntity(dto);
         repository.save(list);
     }
