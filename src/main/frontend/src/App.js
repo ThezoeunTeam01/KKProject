@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 import FormData from "./FormData";
 import LoginForm from "./LoginForm";
 import TMDBList from "./TMDBList";
-import MovieList from "./MovieList";
+import LikeList from "./LikeList";
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
            <FormData/>
            <LoginForm/>
            <TMDBList/>
-           <MovieList/>
+           <LikeList/>
        </div>
     );
 };

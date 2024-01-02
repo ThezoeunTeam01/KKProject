@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const MovieList = () => {
+const LikeList = () => {
     const [movies, setMovies] = useState([]);
+    const [userId, setUserId] = useState(localStorage.getItem('userId'));
 
     useEffect(() => {
         const fetchMovies = async () => {
-            const movieIds = [695721, 572802, 891699];
-            const apiKey = '9c8709e24862b7b00803591402286323';
-
             try {
+                // /likeRead를 사용하여 사용자의 찜 목록을 가져오기
+                const response = await axios.post('/likeRead', { userId: userId });
+                const movieIds = response.data.map((likedMovie) => likedMovie.movieId);
+                const apiKey = '9c8709e24862b7b00803591402286323';
+
                 // Promise.all을 사용하여 여러 개의 API 호출을 병렬로 수행
                 const promises = movieIds.map(async (id) => {
                     const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`);
@@ -34,7 +38,7 @@ const MovieList = () => {
         };
 
         fetchMovies();
-    }, []);
+    }, [userId]); // userId가 변경될 때마다 useEffect 다시 실행
 
     return (
         <div>
@@ -52,4 +56,4 @@ const MovieList = () => {
     );
 };
 
-export default MovieList;
+export default LikeList;
